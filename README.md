@@ -1,6 +1,6 @@
 # my-vue-app "Brack service" 😥
 
-## License: License: Don't Look Or Touch It!😥
+## License: Don't Look Or Touch It!😥
 
 ## Project setup
 
