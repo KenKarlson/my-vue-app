@@ -9,6 +9,17 @@
       <p>Email: {{ user.email }}</p>
       <p>Телефон: {{ user.phone }}</p>
     </div>
+
+    <router-link :to="{ name: 'UsersList' }"
+      >Назад к списку пользователей</router-link
+    >
+    <router-link :to="{ name: 'UserPosts', params: { id: userId } }"
+      >Посты пользователя</router-link
+    >
+    <router-link :to="{ name: 'UserTodos', params: { id: userId } }"
+      >Задачи пользователя</router-link
+    >
+    <button v-if="error" @click="fetchUser">Повторить попытку</button>
   </div>
 </template>
 
