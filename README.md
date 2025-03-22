@@ -1,4 +1,4 @@
-# my-vue-app "Brack service"
+# my-vue-app "Brack service" 😥
 
 ## Project setup
 
