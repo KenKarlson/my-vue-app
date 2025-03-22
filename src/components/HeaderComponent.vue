@@ -1,9 +1,9 @@
 <template>
   <header>
     <nav>
-      <router-link to="/">Главная</router-link> |
-      <router-link to="/main">Не главная</router-link>|
-      <router-link to="/about">Другая</router-link>
+      <router-link :to="{ name: 'Home' }">Главная</router-link>
+      <router-link :to="{ name: 'About' }">О нас</router-link>
+      <router-link :to="{ name: 'Contact' }">Контакты</router-link>
     </nav>
   </header>
 </template>

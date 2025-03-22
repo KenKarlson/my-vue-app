@@ -1,19 +1,24 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-
-import HeaderComponent from "@/components/HeaderComponent.vue";
-import MainComponent from "@/components/MainComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/", component: MainComponent },
-  { path: "/about", component: HeaderComponent },
-  { path: "/contact", component: FooterComponent },
+  { path: '/', name: 'Home', component: () => import('@/views/HomePage.vue') },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('@/views/AboutPage.vue'),
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('@/views/ContactPage.vue'),
+  },
+  { path: '*', component: () => import('@/views/NotFoundPage.vue') },
 ];
 
 export default new VueRouter({
-  mode: "history",
+  mode: 'history',
   routes,
 });

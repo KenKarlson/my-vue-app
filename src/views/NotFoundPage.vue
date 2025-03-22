@@ -1,9 +1,8 @@
 <template>
-  <header></header>
+  <div>404</div>
 </template>
-
 <script>
 export default {
-  name: 'FooterComponent',
+  name: 'NotFoundPage',
 };
 </script>
