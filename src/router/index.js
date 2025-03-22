@@ -16,6 +16,12 @@ const routes = [
     component: () => import('@/views/ContactPage.vue'),
   },
   { path: '*', component: () => import('@/views/NotFoundPage.vue') },
+  {
+    path: '/user/:id',
+    name: 'User',
+    component: () => import('@/views/UserPage.vue'),
+    props: true,
+  },
 ];
 
 export default new VueRouter({
