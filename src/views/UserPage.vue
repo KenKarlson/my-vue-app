@@ -26,7 +26,7 @@ export default {
       this.loading = true;
       this.error = null;
       try {
-        // Проверяем что ID является числом
+        // Проверяем что ID является числом )) было :число))
         if (isNaN(this.userId)) {
           throw new Error('Некорректный ID пользователя');
         }
