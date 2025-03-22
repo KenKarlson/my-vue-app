@@ -22,3 +22,9 @@ export default {
   },
 };
 </script>
+<style>
+.router-link-exact-active {
+  color: #d4554c;
+  border-bottom: 2px solid #b94242;
+}
+</style>
