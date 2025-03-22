@@ -1,11 +1,13 @@
 <template>
   <div class="user-page">
-    <div v-if="loading">Загрузка...</div>
-    <div v-else-if="error">{{ error }}</div>
+    <div v-if="loading" class="loading">Загрузка данных...</div>
+    <div v-else-if="error" class="error">{{ error }}</div>
     <div v-else>
       <h2>Профиль пользователя</h2>
-      <p>ID пользователя: {{ userId }}</p>
+      <p>ID: {{ userId }}</p>
       <p>Имя: {{ user.name }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Телефон: {{ user.phone }}</p>
     </div>
   </div>
 </template>
@@ -13,7 +15,7 @@
 <script>
 export default {
   name: 'UserPage',
-
+  props: ['id'],
   data() {
     return {
       user: null,
@@ -21,13 +23,17 @@ export default {
       error: null,
     };
   },
+  computed: {
+    userId() {
+      return this.id || this.$route.params.id;
+    },
+  },
   methods: {
     async fetchUser() {
       this.loading = true;
       this.error = null;
       try {
-        // Проверяем что ID является числом )) было :число))
-        if (isNaN(this.userId)) {
+        if (!this.userId || isNaN(this.userId)) {
           throw new Error('Некорректный ID пользователя');
         }
 
@@ -36,30 +42,37 @@ export default {
         );
 
         if (!response.ok) {
-          throw new Error('Пользователь не найден');
+          throw new Error(`Ошибка ${response.status}: Пользователь не найден`);
         }
 
         this.user = await response.json();
       } catch (error) {
         this.error = error.message;
+        console.error('Ошибка:', error);
       } finally {
         this.loading = false;
       }
     },
   },
-  computed: {
-    userId() {
-      return this.$route.params.id;
-    },
-  },
   watch: {
-    userId(newId) {
+    userId() {
       this.fetchUser();
     },
   },
   created() {
-    console.log('ID из created:', this.$route.params.id);
     this.fetchUser();
   },
 };
 </script>
+
+<style scoped>
+.loading {
+  color: #666;
+}
+.error {
+  color: #ff4444;
+}
+.user-page {
+  padding: 20px;
+}
+</style>

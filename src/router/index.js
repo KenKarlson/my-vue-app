@@ -17,7 +17,7 @@ const routes = [
   },
   { path: '*', component: () => import('@/views/NotFoundPage.vue') },
   {
-    path: '/user/:id(\\d+)', // Только то что надо
+    path: '/user/:id',
     name: 'User',
     component: () => import('@/views/UserPage.vue'),
     props: true,

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>ContactsPage</h1>
+    <h1>ContactPage</h1>
   </header>
 </template>
 
